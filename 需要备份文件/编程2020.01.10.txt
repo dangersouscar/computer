@@ -1,0 +1,664 @@
+Sub 宏1()
+'
+' 宏1 宏
+'
+
+'
+    Sheets("sheet6").Select
+    Columns("C:C").Select
+    Application.CutCopyMode = False
+    Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
+    Range("C2").Select
+     Dim rng As Range
+     For Each rng In Range("c2", Cells(Rows.Count, "b").End(xlUp).Offset(0, 1))
+      rng = Mid(rng.Offset(0, -1), 3, 2)
+      Next rng
+    Range("A1").Select
+    Selection.CurrentRegion.Select
+    Selection.Copy
+    Sheets("叉车明细").Select
+    Range("A1").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+End Sub
+新建程序2
+Sub 数据()
+Sheets("sheet6").Select
+Columns("c:c").Select
+Selection.Insert
+Range("C2").Select
+Dim rng As Range
+For Each rng In Range("c2", Cells(Rows.Count, "b").End(xlUp).Offset(0, 1))
+rng = Mid(rng.Offset(0, -1), 3, 2)
+Next rng
+Range("A1").Select
+Selection.CurrentRegion.Select
+Selection.Copy
+Sheets("叉车明细").Select
+Range("A1").Select
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("sheet4").Select
+Columns("c:c").Select
+Selection.Insert
+Range("C2").Select
+Dim aq As Range
+For Each aq In Range("c2", Cells(Rows.Count, "b").End(xlUp).Offset(0, 1))
+aq = Mid(aq.Offset(0, -1), 3, 2)
+Next aq
+Range("A1").Select
+Selection.CurrentRegion.Select
+Selection.Copy
+Sheets("一层").Select
+Range("A1").Select
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+End Sub
+
+新建程序三
+Sub 数据()
+Sheets("sheet6").Select
+Columns("c:c").Select
+Selection.Insert
+Range("C2").Select
+Dim rng As Range
+For Each rng In Range("c2", Cells(Rows.Count, "b").End(xlUp).Offset(0, 1))
+rng = Mid(rng.Offset(0, -1), 3, 2)
+Next rng
+Range("A1").Select
+Selection.CurrentRegion.Select
+Selection.Copy
+Sheets("叉车明细").Select
+Range("A1").Select
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+Sheets("sheet4").Select
+Columns("c:c").Select
+Selection.Insert
+Range("C2").Select
+Dim aq As Range
+For Each aq In Range("c2", Cells(Rows.Count, "b").End(xlUp).Offset(0, 1))
+aq = Mid(aq.Offset(0, -1), 3, 2)
+Next aq
+Range("A1").Select
+Selection.CurrentRegion.Select
+Selection.Copy
+Sheets("一层").Select
+Range("A1").Select
+Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+
+End Sub
+Sub 复制货()
+'
+' 复制货 宏
+'
+' 快捷键: Ctrl+j
+'
+    Sheets("每日排名").Select
+    Range("A1:k21").Select
+    selction.Copy
+End Sub
+Sub 复制叉车()
+  Sheets("叉车&班组效率").Select
+    Range("A1:m12").Select
+    selction.Copy
+End Sub
+新建程序四
+Sub 文件()
+Dim sr$
+Dim n
+sr = Dir("C:\Users\执笔话爱\Desktop\包老师组\开题报告\")
+Do
+n = n + 1
+Cells(n, 1) = sr
+sr = Dir
+Loop Until sr = ""
+
+End Sub
+Sub 提取名字()
+Dim rng As Range, name$, a%, i%
+For Each rng In Range(Cells(1, 1), Cells(1, 1).End(xlDown))
+name = rng.Value
+a = Len(name)
+For i = 1 To a
+If Mid(name, i, 1) = "蔡" Then
+rng.Offset(0, 1) = "蔡登鸿 201307070104.doc"
+ElseIf Mid(name, i, 1) = "周" Then
+rng.Offset(0, 1) = "周宁 201307070106.doc"
+ElseIf Mid(name, i, 1) = "唐" Then
+rng.Offset(0, 1) = "唐颖 201307070101.doc"
+ElseIf Mid(name, i, 1) = "刘" Then
+rng.Offset(0, 1) = "刘继成 201307070103.doc"
+ElseIf Mid(name, i, 1) = "王" Then
+rng.Offset(0, 1) = "王翔冀 201307070105.doc"
+ElseIf Mid(name, i, 1) = "赵" Then
+rng.Offset(0, 1) = "赵姗姗 201307070221.doc"
+ElseIf Mid(name, i, 1) = "何" Then
+rng.Offset(0, 1) = "何华雷 201307070108.doc"
+ElseIf Mid(name, i, 1) = "姚" Then
+rng.Offset(0, 1) = "姚星宇 201307070109.doc"
+ElseIf Mid(name, i, 1) = "韩" Then
+rng.Offset(0, 1) = "韩桐平 201307070231.doc"
+End If
+Next i
+Next rng
+End Sub
+Sub rename()
+Dim x As String, y As String, q%, i%
+q = Cells(1, 1).End(xlDown).Row
+For i = 1 To q
+x = Cells(i, 1).Value
+y = Cells(i, 2).Value
+Name "C:\Users\执笔话爱\Desktop\包老师组\开题报告\" & x As "C:\Users\执笔话爱\Desktop\包老师组\开题报告\" & y
+Next
+End Sub
+    
+Sub 宏2()
+'
+' 宏2 宏
+'
+
+'
+    Worksheets("叉车下架小时产能播报").Select
+    Dim x, y
+    x = Cells(3, 4).End(xlDown).Row + 1
+    Rows(x & ":" & 20).Select
+    Selection.EntireRow.Hidden = False
+    y = x + 1
+    Rows(y & ":" & 19).Select
+    Selection.EntireRow.Hidden = True
+
+End Sub
+Sub 宏1()
+'
+' 宏1 宏
+'
+
+'
+Sheets("sheet2").Select
+Dim rng As Range, arr(), n
+For Each rng In Range(Cells(1, 3), Cells(1, 3).End(xlDown))
+If rng.Value = "1组" Then
+n = n + 1
+ElseIf rng.Value = "2组" Then
+n = n + 1
+ElseIf rng.Value = "3组" Then
+n = n + 1
+ElseIf rng.Value = "组别" Then
+n = n + 1
+End If
+ReDim Preserve arr(1 To n)
+If rng.Value = "1组" Then
+arr(n) = rng.Offset(0, -2).Resize(1, 10)
+ElseIf rng.Value = "2组" Then
+arr(n) = rng.Offset(0, -2).Resize(1, 10)
+ElseIf rng.Value = "3组" Then
+arr(n) = rng.Offset(0, -2).Resize(1, 10)
+ElseIf rng.Value = "组别" Then
+arr(n) = rng.Offset(0, -2).Resize(1, 10)
+End If
+Next
+arr = Application.Transpose(Application.Transpose(arr))
+Sheets("拣货").Select
+Cells(1, 1).Resize(n, 10) = arr
+End Sub
+
+
+Sub shuaxuan()
+Sheets("sheet2").Select
+Dim rng As Range, arr(), n%
+For Each rng In Range(Cells(1, 4), Cells(1, 4).End(xlDown))
+If rng.Value = "1班" And rng.Offset(0, 5).Value >= 150 Then
+n = n + 1
+ElseIf rng.Value = "2班" And rng.Offset(0, 5).Value >= 150 Then
+n = n + 1
+ElseIf rng.Value = "3班" And rng.Offset(0, 5).Value >= 150 Then
+n = n + 1
+ElseIf rng.Value = "班别" Then
+n = n + 1
+End If
+ReDim Preserve arr(1 To n)
+If rng.Value = "1班" And rng.Offset(0, 5).Value >= 150 Then
+arr(n) = rng.End(xlToLeft).Resize(1, 9)
+ElseIf rng.Value = "2班" And rng.Offset(0, 5).Value >= 150 Then
+arr(n) = rng.End(xlToLeft).Resize(1, 9)
+ElseIf rng.Value = "3班" And rng.Offset(0, 5).Value >= 150 Then
+arr(n) = rng.End(xlToLeft).Resize(1, 9)
+ElseIf rng.Value = "班别" Then
+arr(n) = rng.End(xlToLeft).Resize(1, 9)
+End If
+Next
+Cells(1, 10).Resize(n, 9) = Application.Transpose(Application.Transpose(arr))
+End Sub
+
+Sub 论文程序()
+'
+' 论文程序 宏
+'
+
+'
+    
+Dim a, tqq, rxq, arr(), zxq, rxqsj, arrsj()
+For j = 1 To 200
+a = Application.WorksheetFunction.RandBetween(1, 100)
+If a < 11 Then
+tqq = 1
+ElseIf a < 31 Then
+tqq = 2
+ElseIf a < 71 Then
+tqq = 3
+ElseIf a < 91 Then
+tqq = 4
+ElseIf a < 101 Then
+tqq = 5
+End If
+ReDim Preserve arr(1 To tqq)
+ReDim Preserve arrsj(1 To tqq)
+For i = 1 To tqq
+rxqsj = Application.WorksheetFunction.RandBetween(1, 100)
+If rxqsj < 11 Then
+rxq = 75
+ElseIf rxqsj < 44 Then
+rxq = 85
+ElseIf rxqsj < 63 Then
+rxq = 95
+ElseIf rxqsj < 87 Then
+rxq = 105
+ElseIf rxqsj < 101 Then
+rxq = 115
+End If
+arr(i) = rxq
+arrsj(i) = rxqsj
+Next i
+zxq = WorksheetFunction.Sum(arr)
+Sheets("模拟过程").Select
+Cells(j + 1, 2) = a
+Cells(j + 1, 3) = tqq
+Cells(j + 1, 4) = Join(arrsj, ",")
+Cells(j + 1, 5) = Join(arr, ",")
+Cells(j + 1, 6) = WorksheetFunction.Sum(arr)
+Next j
+End Sub
+' 审批表信息 宏
+'
+' 快捷键: Ctrl+j
+'
+    Dim invoice, djzs, fph, I
+    I = MsgBox("是否仍然执行代码?", vbOKCancel)
+    If I = vbOK Then
+    invoice = Cells(8, 10).Value
+    djzs = Left(Right(invoice, 2), 1)
+    Cells(4, 2).Value = Cells(6, 10).Value
+    Cells(5, 3).Value = Cells(7, 10).Value
+'公司名称
+    Cells(7, 3).Value = Mid(invoice, 5, 10000)
+    '发票号
+    Cells(7, 7).Value = djzs
+'发票张数
+    Cells(7, 6).Value = Cells(10, 10).Value
+'金额
+    Cells(7, 5).Value = Cells(9, 10).Value
+'种类
+    Range(" E16").Select
+    Selection.Copy
+    Range("E16").Select
+    Selection.PasteSpecial Paste:=xlPasteValues
+
+    End If
+End Sub
+Sub 复制重命名工作表()
+    Dim i As Integer, sheetname$, str$
+    For i = 1 To 36
+        sheetname = Sheets("sheet75").Cells(i, 1).Value
+        Sheets(sheetname).Select
+        Cells(4, 2) = Sheets("sheet75").Cells(i, 2).Value
+        Cells(4, 4) = Sheets("sheet75").Cells(i, 3).Value
+        Cells(5, 2) = Sheets("sheet75").Cells(i, 4).Value
+        Cells(5, 4) = Sheets("sheet75").Cells(i, 5).Value
+    Next i
+End Sub
+Sub 复制重命名工作表()
+    Dim i As Integer
+    For i = 1 To 36
+        ActiveSheet.Copy after:=ActiveSheet
+        ActiveSheet.Name = Sheets("sheet75").Cells(i, 1).Value
+    Next i
+End Sub
+
+Sub 点收入库收发录()
+'
+' 点收入库收发录 宏
+'
+   Dim sheet, n, r, s, t, arr1, arr2
+   For Each sheet In Sheets
+   Sheets(sheet.name).Select
+   If sheet.name <> "点收台长" Then
+   Range("a8", Cells(Rows.Count, "j").End(xlUp).Offset(0, 3)).Copy
+    s = Cells(4, 6).Value
+   t = Cells(5, 2).Value
+   Sheets("点收台长").Select
+    Range("a" & Cells(Rows.Count, 1).End(xlUp).Row + 1, "a" & Cells(Rows.Count, 1).End(xlUp).Row + 1).Select
+      Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+        Else
+        End If
+Next
+End Sub
+Sub 审批表信息()
+'
+' 审批表信息 宏
+'
+' 快捷键: Ctrl+j
+'
+    Dim invoice, djzs, fph, i
+    i = MsgBox("是否仍然执行代码?", vbOKCancel)
+    If i = vbOK Then
+    invoice = Cells(8, 10).Value
+    djzs = Left(Right(invoice, 2), 1)
+    Cells(4, 2).Value = Cells(6, 10).Value
+    Cells(5, 3).Value = Cells(7, 10).Value
+'公司名称
+    Cells(7, 3).Value = Mid(invoice, 5, 10000)
+    '发票号
+    Cells(7, 7).Value = djzs
+'发票张数
+    Cells(7, 6).Value = Cells(10, 10).Value
+'金额
+    Cells(7, 5).Value = Cells(9, 10).Value
+'种类
+    Range(" E16").Select
+    Selection.Copy
+    Range("E16").Select
+    Selection.PasteSpecial Paste:=xlPasteValues
+
+    End If
+End Sub
+Sub 提取文件名()
+Dim sr$
+Dim n
+sr = Dir(Cells(1, 6).Value & Cells(2, 6).Value)
+n = 1
+Do
+n = n + 1
+Cells(n, 1) = sr
+sr = Dir
+Loop Until sr = ""
+
+End Sub
+Sub 文件夹重命名()
+Dim x As String, y As String, q%, i%
+q = Cells(1, 1).End(xlDown).Row
+For i = 1 To q
+x = Cells(i, 1).Value
+y = Cells(i, 2).Value
+Name Cells(1, 5).Value & x As Cells(1, 5).Value & y
+Next
+End Sub
+Sub 提取文件夹名()
+    Dim fso, folder, fds, fd, folder2, fs, f, n
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    Set folder1 = fso.GetFolder(Cells(1, 5).Value) '获得文件夹
+    Set fds = folder1.subfolders        '子文件夹集合
+        For Each fd In fds                  '遍历子文件夹
+        n = n + 1
+        Cells(n, 1) = fd.name
+         Cells(n, 2) = fd.path
+       
+    Next
+    Dim rng As Range, path
+    For Each rng In Range(Cells(1, 2), Cells(1, 2).End(xlDown))
+    path = rng.Value
+    rng.Hyperlinks.Add Anchor:=rng, Address:=path, _
+        TextToDisplay:=path
+    Next rng
+End Sub
+Sub 重命名文件()
+Dim x As String, y As String, q%, i%
+q = Cells(1, 1).End(xlDown).Row
+For i = 2 To q
+x = Cells(i, 1).Value
+y = Cells(i, 2).Value
+Name Cells(1, 6).Value & x As Cells(1, 6).Value & y
+Next
+End Sub
+Private Sub Worksheet_BeforeDoubleClick(ByVal Target As Range, Cancel As Boolean)
+    
+    If Not Intersect(Target, [c3:j100]) Is Nothing Then
+    If Target(1) = "已完成" Then
+        Target(1) = ""
+        Target(1).Interior.Color = RGB(255, 255, 255)
+    Else
+        Target(1) = "已完成"
+        Target(1).Interior.Color = RGB(255, 0, 0)
+    End If
+    End If
+    If Not Intersect(Target, [c1:c1]) Is Nothing Then
+    Dim rng As Range, foldername, PathG
+    For Each rng In Range(Cells(4, 2), Cells(4, 2).End(xlDown))
+    foldername = rng.Value
+     PathG = Cells(1, 2).Value & "\" & foldername
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    If fso.FolderExists(PathG) = True Then
+    Else
+        MkDir PathG    '//创建文件夹
+    End If
+    Next rng
+    End If
+End Sub
+Sub 折分工作表()
+
+'
+' Sub 折分工作表()
+
+'
+' 宏1 宏
+'
+    Sheets("sheet2").Select
+    For Each Rng In Range(Cells(1, 1), Cells(1, 1).End(xlDown))
+    Worksheets.Add.Name = Rng.Value
+    Sheets("收发存合计").Select
+    Sheets("收发存合计").Range("$A$2:$U$18375").AutoFilter Field:=9, Criteria1:= _
+        Rng.Value
+    Sheets("收发存合计").Range("A1:u18375").SpecialCells(xlCellTypeVisible).Copy Sheets(Rng.Value).Range("a1")
+    Sheets(Rng.Value).Select
+    Cells(2, 15).End(xlDown).Offset(1, 0).Value = WorksheetFunction.Sum(Range("o:o"))
+    Next
+End Sub
+Sub 拆分工作表到工作薄()
+'
+' 宏1 宏
+'
+
+    Dim name
+    For Each Sheet In Sheets
+    name = Sheet.name
+    Sheet.Select
+    Sheet.Move
+    s
+    ActiveWorkbook.SaveAs Filename:="C:\Users\执笔话爱\Desktop\蔡登鸿整理已封账合同目录\" & name & ".xlsx" _
+        , FileFormat:=xlOpenXMLWorkbook, CreateBackup:=False
+    ActiveWindow.Close
+    Next
+End Sub
+
+Sub 重命名文件()
+Dim x As String, y As String, q%, i%, f, d
+q = Cells(1, 1).End(xlDown).Row
+For i = 2 To q
+x = Cells(i, 1).Value
+y = Cells(i, 2).Value
+f = Cells(1, 6).Value & "\" & x
+d = Cells(2, 6).Value & "" & y
+Name f As d
+Next
+End Sub
+Sub 提取文件夹名二级()
+    Dim fso, folder, fds, fd, folder2, fs, f, n
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    Set folder1 = fso.GetFolder(Cells(1, 5).Value) '获得文件夹
+    Set fds = folder1.subfolders        '子文件夹集合
+        For Each fd In fds                  '遍历子文件夹
+            Set fd2 = fd.subfolders
+            For Each fd3 In fd2
+            n = n + 1
+            Cells(n, 1) = fd3.name
+            Cells(n, 2) = fd3.path
+            Next
+        Next
+    Dim rng As Range, path
+    For Each rng In Range(Cells(1, 2), Cells(1, 2).End(xlDown))
+    path = rng.Value
+    rng.Hyperlinks.Add Anchor:=rng, Address:=path, _
+        TextToDisplay:=path
+    Next rng
+End Sub
+Sub fibonacci数列()
+'
+' 宏2 宏
+'
+
+'
+Dim arry(1 To 1, 1 To 50), i
+arry(1, 1) = 1
+arry(1, 2) = 1
+For i = 3 To 50
+s = i - 2
+p = i - 1
+arry(1, i) = arry(1, s) + arry(1, p)
+Next
+End Sub
+Public Function 二进制(x)
+ Dim i, cs, zs, ys, arry1(1 To 2, 1 To 20), arry(20), q
+    cs = x
+    Do Until cs = 0
+    i = i + 1
+    ys = cs Mod 2
+    cs = cs / 2
+    zs = WorksheetFunction.RoundDown(cs, 0)
+    arry1(1, i) = zs
+    arry1(2, i) = ys
+    cs = zs
+Loop
+    For i = 1 To 20
+    arry(21 - i) = arry1(2, i)
+    Next
+    二进制 = Join(arry, "")
+End Function
+
+Sub cs()
+    Dim i, cs, zs, ys, arry1(1 To 2, 1 To 20), arry(20), q
+    cs = 1023
+    Do Until cs = 0
+    i = i + 1
+    ys = cs Mod 2
+    cs = cs / 2
+    zs = WorksheetFunction.RoundDown(cs, 0)
+    arry1(1, i) = zs
+    arry1(2, i) = ys
+    cs = zs
+Loop
+    For i = 1 To 20
+    arry(21 - i) = arry1(2, i)
+    Next
+    q = Join(arry, "")
+End Sub
+//VBA递归遍历文件夹
+Public Function bl(path, arry(), i)
+
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    If fso.GetFolder(path).subfolders.Count = 0 Then
+        i = i + 1
+       ReDim Preserve arry(1 To i)
+       arry(i) = path
+    Else
+        Set folder = fso.GetFolder(path) '获得文件夹
+        Set folder1 = folder.subfolders
+        For Each rng In folder1                  '遍历子文件夹
+            path = rng.path
+            bl path, arry(), i
+        Next
+    End If
+End Function
+Sub 件夹二级()
+  Dim path, fso, folder, folder1, arry(), i, rng
+  path = Cells(1, 5).Value  '获得文件夹
+  i = 0
+  bl path, arry(), i
+  Cells(1, 1).Resize(i, 1) = Application.Transpose(arry)
+End Sub
+Sub a()
+    For Data = 3 To 101
+    For Each rng In Range(Cells(Data, "i"), Cells(Data, "k"))
+    If rng.Value = Cells(Data, "l").Value And rng.Value <> "" Then
+        With rng.Interior
+            .Pattern = xlSolid
+            .PatternColorIndex = xlAutomatic
+            .Color = 255
+            .TintAndShade = 0
+            .PatternTintAndShade = 0
+         End With
+    End If
+    Next rng
+    Next
+End Sub
+Sub a()
+Dim arr(), i
+For Each Rng In Range(Cells(41, "N"), Cells(48, "P"))
+    i = i + 1
+    With Rng.Interior
+        .Pattern = xlSolid
+        .PatternColorIndex = xlAutomatic
+        .Color = 255
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+    Cells(i, "R") = Rng.Value
+Next
+End Sub
+Sub 批注()
+Dim path
+    For Each Cmt In ActiveSheet.Comments
+        Cmt.Parent.Comment.Shape.Width = 350
+        Cmt.Parent.Comment.Shape.Height = 350
+    Next Cmt
+    For Each Rng In Range(Cells(1, "a"), Cells(422, "a"))
+        path = "D:\孟加拉做账\辅材购买\辅材材料图片\" & Rng.Value
+        Rng.AddComment.Shape.Fill.UserPicture PictureFile:=path
+    Next
+    For Each Cmt In ActiveSheet.Comments
+        Cmt.Parent.Comment.Shape.Width = 350
+    Next Cmt
+End Sub
+Sub a()
+Dim d As Object, b, arri, i
+Set d = CreateObject("Scripting.Dictionary")
+arri = Range(Cells(2, "f"), Cells(26, "g"))
+For i = 1 To UBound(arri, 1) - LBound(arri, 1) + 1
+
+d(arri(i, 1)) = d(arri(i, 1)) & " " & arri(i, 2)
+Next i
+Cells(2, "j").Resize(d.Count, 2) = Application.Transpose(Array(d.keys, d.items))
+
+
+End Sub
+
+Sub a()
+Dim d As Object, b, arri, i
+Set d = CreateObject("Scripting.Dictionary")
+arri = Range(Cells(2, "f"), Cells(30, "g"))
+For i = 1 To UBound(arri, 1) - LBound(arri, 1) + 1
+
+d(arri(i, 1)) = d(arri(i, 1)) & " " & arri(i, 2)
+Next i
+Cells(2, "j").Resize(d.Count, 2) = Application.Transpose(Array(d.keys, d.items))
+
+
+End Sub
+
+
+
+
+
+

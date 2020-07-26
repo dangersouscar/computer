@@ -11,13 +11,10 @@ body = { "env":"cdh1-61abq","query": "db.collection(\"allrecords\").limit(1000).
 response = requests.post(url, data = json.dumps(body))
 ##url = 'https://api.weixin.qq.com/tcb/databasemigratequeryinfo?access_token='+access_token
 response = requests.post(url, data = json.dumps(body))
-data=eval(response.text)['data']
+data=eval(response.text.replace("\/","/"))['data']
+print(data)
 list=[]
 for i in data:
     value=eval(i)
     list.append(value)
-print(list)
 pd.DataFrame(list).to_csv('维修记录.csv')
-
-
-
