@@ -657,6 +657,17 @@ Cells(2, "j").Resize(d.Count, 2) = Application.Transpose(Array(d.keys, d.items))
 
 End Sub
 
+word 宏，设置所有图片大小为相同
+Sub SetPicSize() '设置图片大小
+Dim n '图片个数
+On Error Resume Next '忽略错误
+For n = 1 To ActiveDocument.InlineShapes.Count 'InlineShapes 类型 图片
+ActiveDocument.InlineShapes(n).Height = 7.74 * 28.35 '设置图片高度为 5cm （1cm等于28.35px）
+ActiveDocument.InlineShapes(n).Width = 7.48 * 28.35 '设置图片宽度 4cm
+Next n
+End Sub
+
+
 
 
 
